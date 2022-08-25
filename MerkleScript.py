@@ -29,7 +29,7 @@ for row in fileReader :
 
 	for tnx in row :
 
-		currentItem = str(tnx)
+		currentItem = str(tnx).encode("utf-8")
 		storeHash.append(sha256(currentItem).hexdigest())
 
 		# calculate hash row wise and save them in the storeHash
@@ -53,7 +53,7 @@ while (len(storeHash)> 1) :
 
 	for i in range(0, len(storeHash) - 1) : 
 
-		storeHash[j] = sha256(str(storeHash[i] + storeHash[i+1])).hexdigest()
+		storeHash[j] = sha256(str(storeHash[i] + storeHash[i+1]).encode("utf-8")).hexdigest()
 		# hash of the i th leaf and i + 1 th leaf are concatenated
 		# to find the hash parent to the both
 		
